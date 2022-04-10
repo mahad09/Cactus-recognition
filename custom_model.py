@@ -80,13 +80,13 @@ def model_training(model, train_data, test_data):
   )
 
   history = model.fit(train_data, validation_data=test_data, epochs=EPOCHS, callbacks=[tensorboard])
-  model.save('cactus_classifier.h5')
+  model.save('custom_model_stats/cactus_classifier.h5')
 
   return history, model
 
 
 def model_evaluation(test_data):
-  trained_model = keras.models.load_model('cactus_classifier.h5')
+  trained_model = keras.models.load_model('custom_model_stats/cactus_classifier.h5')
   overall_result = trained_model.evaluate(test_data)
   print(dict(zip(trained_model.metrics_names, overall_result)))
 
